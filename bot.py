@@ -74,12 +74,20 @@ async def culture(ctx, *choices: str):
 @bot.command()
 async def issues(ctx):
     await ctx.send("""If you are having issues with running the mod please make sure you have followed these steps:
-1. Installed the mod as presented in this video with the correct load order https://youtube.com/watch?v=v9cXaniwaqI&feature=share
+1. Installed the mod as presented in this video with the correct load order https://youtu.be/3EceOVpsg84
 2. Disabled ANY other mods apart from the ones related to ROT as seen in the video above
 3. Make sure you are using the correct version of the game and the mod
 If you are still having problems, feel free to let us know in one of the help channels under the support category""") 
 
 # Gives a welcome message when a new user joins
+
+
+# Command about launcher
+@commands.cooldown(1,6,BucketType.user)
+@bot.command()
+async def launcher(ctx):
+    await ctx.send("""If you are using more mods try using the BUTRLoader Launcher. Details in link below:
+https://www.nexusmods.com/mountandblade2bannerlord/mods/2513""") 
 
 @bot.event
 async def on_member_join(member):
