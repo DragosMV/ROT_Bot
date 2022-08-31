@@ -24,6 +24,8 @@ class MyHelp(commands.MinimalHelpCommand):
 # Initialise bot
 bot = commands.Bot(command_prefix='?', description=description, help_command = MyHelp(), intents=intents)
 
+# async and await make it so the bot can perform multiple actions at the same time (don't want it to freeze while sending a command/message)
+
 # Confirm startup of bot with a message
 @bot.event
 async def on_ready():
@@ -84,8 +86,8 @@ async def on_member_join(member):
         guild = member.guild
         if guild.system_channel is not None:
             to_send = f'''Welcome {member.mention} to the {guild.name} discord server!
-We're glad to have you here, if you want to get started with the mod check out this video to install it:
-https://youtube.com/watch?v=v9cXaniwaqI&feature=share. To see what commands the bot has available you can use ?help.
+We're glad to have you here, if you want to get started with the mod check out this video from Jackie on how to install it together with other mods:
+https://youtu.be/3EceOVpsg84. To see what commands the bot has available you can use ?help.
 The prefix for commands is a "?". ex: ?diplomacy to find out more about the diplomacy mod with ROT'''
             await guild.system_channel.send(to_send)
 
