@@ -90,14 +90,14 @@ async def launcher(ctx):
 https://www.nexusmods.com/mountandblade2bannerlord/mods/2513""") 
 
 
-# Command about launcher
+# Command about exception messages
 @commands.cooldown(1,6,BucketType.user)
 @bot.command()
 async def exception(ctx):
     await ctx.send("""Better exception window provides more detailed error reports:
 https://www.nexusmods.com/mountandblade2bannerlord/mods/404""") 
 
-# Command about launcher
+# Command about giant characters
 @commands.cooldown(1,6,BucketType.user)
 @bot.command()
 async def giantbug(ctx):
@@ -121,6 +121,8 @@ async def on_message_edit(message_before,message_after):
     if message_before.author.bot:
         return
     embed = discord.Embed(colour=0xe74c3c, timestamp=datetime.datetime.now())
+    channel = message.channel.id
+    embed.add_field(name="Channel:",value=f"<#{channel}>",inline=False)
     embed.set_author(name=f"{message_before.author} edited a message",icon_url=message_before.author.display_avatar)
     embed.add_field(name="Before:",value=f"{message_before.content}",inline=False)
     embed.add_field(name="After:",value=f"{message_after.content}")
@@ -133,6 +135,8 @@ async def on_message_delete(message):
     if message.author.bot:
         return
     embed = discord.Embed(colour=0xe74c3c, timestamp=datetime.datetime.now())
+    channel = message.channel.id
+    embed.add_field(name="Channel:",value=f"<#{channel}>",inline=False)
     embed.set_author(name=f"{message.author} deleted a message",icon_url=message.author.display_avatar)
     embed.add_field(name="Deleted message",value=f"{message.content}",inline=False)
     channel = bot.get_channel(1014587687287656468)
